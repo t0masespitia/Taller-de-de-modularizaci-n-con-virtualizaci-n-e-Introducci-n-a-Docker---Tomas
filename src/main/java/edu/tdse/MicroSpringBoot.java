@@ -23,7 +23,13 @@ public class MicroSpringBoot {
         String className = args[0];
         loadComponent(className);
 
-        HttpServer server = new HttpServer(8080, services);
+        HttpServer server = new HttpServer(getPort(), services);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Se recibió señal de apagado.");
+            server.stop();
+        }));
+
         server.start();
     }
 
@@ -66,12 +72,20 @@ public class MicroSpringBoot {
                 RequestParam requestParam = parameter.getAnnotation(RequestParam.class);
                 String paramName = requestParam.value();
                 String defaultValue = requestParam.defaultValue();
-
                 values[i] = queryParams.getOrDefault(paramName, defaultValue);
             } else {
                 values[i] = null;
             }
         }
+
         return values;
+    }
+
+    private static int getPort() {
+        String port = System.getenv("PORT");
+        if (port != null && !port.isBlank()) {
+            return Integer.parseInt(port);
+        }
+        return 8080;
     }
 }
