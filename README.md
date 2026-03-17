@@ -1,7 +1,7 @@
 # Taller de Arquitecturas de Servidores de Aplicaciones – Tomas Espitia
 
-Este proyecto implementa un **micro framework web en Java** inspirado en el funcionamiento básico de frameworks como Spring Boot.
-El objetivo es comprender cómo funcionan internamente conceptos como **controladores, rutas HTTP, anotaciones y servidores web**, además de aprender a **contenedorizar la aplicación con Docker y desplegarla en una instancia EC2 de AWS**.
+Este proyecto implementa un micro framework web en Java inspirado en el funcionamiento básico de frameworks como Spring Boot.
+El objetivo es comprender cómo funcionan internamente conceptos como controladores, rutas HTTP, anotaciones y servidores web, además de aprender a contenedorizar la aplicación con Docker y desplegarla en una instancia EC2 de AWS.
 
 El framework permite definir controladores con anotaciones y exponer endpoints HTTP accesibles desde un navegador. La aplicación fue desplegada utilizando contenedores Docker en la nube, permitiendo acceder al servicio desde internet.
 
@@ -17,27 +17,11 @@ Estas instrucciones permiten obtener una copia del proyecto y ejecutarlo en un e
 
 Para ejecutar el proyecto necesitas tener instalado:
 
-* **Java 17**
-* **Maven**
-* **Docker**
-* **Git**
-* Cuenta en **AWS** con acceso a EC2
-
-Instalación de herramientas:
-
-Java
-https://adoptium.net/
-
-Maven
-https://maven.apache.org/install.html
-
-Docker
-https://docs.docker.com/get-docker/
-
-AWS CLI (opcional)
-https://aws.amazon.com/cli/
-
----
+* Java 17
+* Maven
+* Docker
+* Git
+* AWS con acceso a EC2
 
 # Installing
 
@@ -70,7 +54,7 @@ target/
 java -cp target/classes edu.tdse.MicroSpringBoot edu.tdse.ejemplo.GreetingController
 ```
 
-El servidor iniciará en:
+El servidor se inicia en:
 
 ```
 http://localhost:6000
@@ -83,7 +67,7 @@ http://localhost:6000
 ```bash
 docker build -t microframework-tomas .
 ```
-
+contruimos las imagenes con 
 ---
 
 ## 5. Ejecutar el contenedor
@@ -91,14 +75,6 @@ docker build -t microframework-tomas .
 ```bash
 docker run -d -p 42000:6000 --name microframework microframework-tomas
 ```
-
-La aplicación quedará disponible en:
-
-```
-http://localhost:42000
-```
-
----
 
 # Running the tests
 
@@ -139,47 +115,32 @@ Estos endpoints demuestran que el framework es capaz de:
 
 # Deployment
 
-La aplicación fue desplegada en **AWS EC2** utilizando Docker.
+La aplicación fue desplegada en AWS EC2 utilizando Docker.
 
 Pasos realizados:
 
-1. Creación de una instancia EC2 con **Amazon Linux 2023**
+1. Creación de una instancia EC2 con *mazon Linux 2023
 2. Conexión mediante SSH usando una llave `.pem`
 3. Instalación de Docker en la instancia
 4. Copia del proyecto hacia la instancia usando `scp`
 5. Construcción de la imagen Docker dentro de EC2
-6. Ejecución del contenedor exponiendo el puerto **42000**
-7. Configuración del **Security Group** para permitir tráfico en el puerto 42000
+6. Ejecución del contenedor exponiendo el puerto 42000
+7. Configuración del security Group para permitir tráfico en el puerto 42000
 
-La aplicación quedó disponible públicamente en:
 
-```
-http://13.218.33.48:42000
-```
+Pruebas:
+1. ![alt text](src/main/resources/public/aws1.png)
+2. ![alt text](src/main/resources/public/aws2.png)
+3. ![alt text](src/main/resources/public/aws3.png)
+4. ![alt text](src/main/resources/public/aws4.png)
+5. ![alt text](src/main/resources/public/aws5.png)
 
----
 
 # Arquitectura del despliegue
 
-```
-Usuario (Navegador)
-        |
-        v
-Internet
-        |
-        v
-AWS EC2 Instance
-        |
-        v
-Docker Container
-        |
-        v
-MicroFramework Java
-```
 
-El contenedor ejecuta el servidor HTTP desarrollado en Java, el cual procesa las rutas definidas mediante anotaciones.
+Usuario Lluego Internet luego AWS EC2 Instance luego Docker Container luego MicroFramework Java
 
----
 
 # Built With
 
@@ -193,12 +154,7 @@ El contenedor ejecuta el servidor HTTP desarrollado en Java, el cual procesa las
 
 # Author
 
-**Tomas Espitia**
+Tomas Espitia
 
 Estudiante de Ingeniería de Sistemas
 
----
-
-# License
-
-Este proyecto fue desarrollado con fines académicos para el curso **Arquitecturas de Servidores de Aplicaciones**.
