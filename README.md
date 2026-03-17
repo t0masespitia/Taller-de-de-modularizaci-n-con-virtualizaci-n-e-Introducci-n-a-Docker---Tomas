@@ -15,7 +15,7 @@ Estas instrucciones permiten obtener una copia del proyecto y ejecutarlo en un e
 
 # Prerequisites
 
-Para ejecutar el proyecto necesitas tener instalado:
+Para ejecutar el proyecto tiene que estar instalado:
 
 * Java 17
 * Maven
@@ -157,4 +157,3 @@ Usuario Lluego Internet luego AWS EC2 Instance luego Docker Container luego Micr
 Tomas Espitia
 
 Estudiante de Ingeniería de Sistemas
-
