@@ -139,7 +139,7 @@ Pruebas:
 # Arquitectura del despliegue
 
 
-Usuario Lluego Internet luego AWS EC2 Instance luego Docker Container luego MicroFramework Java
+Usuario, Luego Internet, luego AWS EC2 Instance, luego Docker Container, luego MicroFramework Java
 
 
 # Built With
